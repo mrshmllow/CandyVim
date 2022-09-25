@@ -11,13 +11,21 @@ CANDYVIM_RUNTIME_DIR="${CANDYVIM_RUNTIME_DIR:-"$XDG_DATA_HOME/candyvim_new"}"
 CANDYVIM_CONFIG_DIR="${CANDYVIM_CONFIG_DIR:-"$XDG_CONFIG_HOME/cvim"}"
 CANDYVIM_CACHE_DIR="${CANDYVIM_CACHE_DIR:-"$XDG_CACHE_HOME/cvim"}"
 
+curl -s https://raw.githubusercontent.com/mrshmllow/CandyVim/main/utils/pretty/mountain.txt
+
 echo "Installing CandyVim"
 
-if [ ! -d "$INSTALL_PATH" ]; then
+rm -rf "$INSTALL_PATH/cvim"
+
+if [ ! -d "$INSTALL_PATH/cvim" ]; then
   git clone https://github.com/mrshmllow/candyvim "$INSTALL_PATH/cvim"
-else
-  git -C "$INSTALL_PATH" pull
 fi
+
+echo "Installing packer.nvim"
+
+rm -rf "$INSTALL_PATH/site/pack/packer/start/packer.nvim"
+
+git clone https://github.com/wbthomason/packer.nvim --depth 1 "$INSTALL_PATH/site/pack/packer/start/packer.nvim/" --quiet
 
 echo "Copying files..."
 
@@ -35,5 +43,5 @@ sed -e s"#RUNTIME_DIR_VAR#\"${CANDYVIM_RUNTIME_DIR}\"#"g \
 
 echo "Updating Plugins..."
 
-cvim --headless -c "autocmd User PackerComplete quitall" -c PackerSync
+"$dest" --headless -c "autocmd User PackerComplete quitall" -c PackerSync &> /dev/null
 
