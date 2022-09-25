@@ -2,6 +2,12 @@ vim.api.nvim_create_autocmd("OptionSet", {
 	pattern = "background",
 	callback = function()
 		vim.cmd("Catppuccin " .. (vim.v.option_new == "light" and "latte" or "mocha"))
+
+		-- This is a bit of a hack
+		local context = require("treesitter-context")
+
+		context.toggle()
+		context.toggle()
 	end,
 })
 
