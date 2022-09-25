@@ -1,6 +1,6 @@
 -- Packer bootstrap --
 local fn = vim.fn
-local install_path = join_paths(vim.fn.stdpath("data"), "site", "pack", "packer", "start", "packer.nvim")
+local install_path = join_paths(get_runtime_dir(), "site", "pack", "packer", "start", "packer.nvim")
 local compile_path = join_paths(get_config_dir(), "plugin", "packer_compiled.lua")
 local snapshot_path = join_paths(get_cache_dir(), "snapshots")
 
@@ -412,7 +412,7 @@ return require("packer").startup({
 			end,
 		},
 		autoremove = true,
-		package_root = join_paths(vim.fn.stdpath("data"), "site", "pack"),
+		package_root = join_paths(get_runtime_dir(), "site", "pack"),
 		compile_path = compile_path,
 		snapshot_path = snapshot_path,
 	},
