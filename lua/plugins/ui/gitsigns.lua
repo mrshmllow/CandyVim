@@ -19,7 +19,7 @@ gitsigns.setup({
 				R = { gs.reset_buffer, "Reset whole buffer" },
 				p = { gs.preview_hunk, "Preview hunk" },
 				d = { gs.diffthis, "View diff" },
-        t = { ":ToggleBlame<CR>", "Toggle Blame" },
+				t = { ":ToggleBlame<CR>", "Toggle Blame" },
 			},
 		}, { prefix = "<leader>", buffer = bufnr })
 
