@@ -183,12 +183,6 @@ return require("packer").startup({
 			end,
 		})
 
-		use({
-			"rcarriga/nvim-dap-ui",
-			config = "require('plugins.dap')",
-			requires = { "mfussenegger/nvim-dap", "theHamsta/nvim-dap-virtual-text" },
-		})
-
 		-- Trouble
 		use({
 			"folke/trouble.nvim",
