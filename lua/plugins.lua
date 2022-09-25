@@ -1,14 +1,8 @@
--- Compile when this file is writen
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
-
 -- Packer bootstrap --
 local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local install_path = join_paths(vim.fn.stdpath("data"), "site", "pack", "packer", "start", "packer.nvim")
+local compile_path = join_paths(get_config_dir(), "plugin", "packer_compiled.lua")
+local snapshot_path = join_paths(get_cache_dir(), "snapshots")
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({
     "git",
@@ -417,5 +411,8 @@ return require("packer").startup({
       end,
     },
     autoremove = true,
+    package_root = join_paths(vim.fn.stdpath("data"), "site", "pack"),
+    compile_path = compile_path,
+    snapshot_path = snapshot_path,
   },
 })
