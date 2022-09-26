@@ -18,7 +18,7 @@ echo "Installing CandyVim"
 rm -rf "$INSTALL_PATH/cvim"
 
 if [ ! -d "$INSTALL_PATH/cvim" ]; then
-  git clone https://github.com/mrshmllow/candyvim "$INSTALL_PATH/cvim"
+  git clone https://github.com/mrshmllow/candyvim --depth 1 "$INSTALL_PATH/cvim"
 fi
 
 echo "Installing packer.nvim"
