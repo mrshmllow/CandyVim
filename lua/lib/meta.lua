@@ -5,7 +5,7 @@ local M = {}
 function M.get_candyvim_version()
 	local stdout = Job:new({
 		command = "git",
-		args = { "rev-parse", "--short", "HEAD" },
+		args = { "log", "--pretty=format:%h", "-1" },
 		cwd = get_cvim_base_dir(),
 		on_stderr = function(_, data)
 			print(data)
