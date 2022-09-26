@@ -10,7 +10,6 @@ require("cvim.bootstrap"):init(base_dir)
 vim.o.termguicolors = true
 
 require("plugins")
-require("keys")
 require("autocmd")
 
 -- Leader --
