@@ -19,6 +19,8 @@ require("nvim-treesitter.configs").setup({
 				["af"] = { query = "@function.outer", desc = "a function" },
 				["if"] = { query = "@function.inner", desc = "a function" },
 
+				["ac"] = { query = "@comment.outer", desc = "a comment" },
+
 				["aC"] = { query = "@class.outer", desc = "a class" },
 				["iC"] = { query = "@class.inner", desc = "a class" },
 
