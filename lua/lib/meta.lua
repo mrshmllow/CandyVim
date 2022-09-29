@@ -15,4 +15,17 @@ function M.get_candyvim_version()
 	return vim.F.if_nil(stdout[1], "")
 end
 
+function M.get_candyvim_branch()
+	local stdout = Job:new({
+		command = "git",
+		args = { "branch", "--show-current" },
+		cwd = get_cvim_base_dir(),
+		on_stderr = function(_, data)
+			print(data)
+		end,
+	}):sync()
+
+	return vim.F.if_nil(stdout[1], "")
+end
+
 return M

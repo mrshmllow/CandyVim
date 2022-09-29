@@ -1,30 +1,37 @@
 local M = {}
 
 M._required_plugins = {
-  {
-    "mrshmllow/document-color.nvim",
-  },
-  {
-    "norcalli/nvim-colorizer.lua",
-  },
+	{
+		"mrshmllow/document-color.nvim",
+	},
+	{
+		"norcalli/nvim-colorizer.lua",
+	},
 }
 
 M._load_on = "BufRead"
 
 function M:init()
-  require("document-color").setup({
-    mode = "background",
-  })
+	local wk = require("which-key")
 
-  local colorizer_config = module_is_enabled("lsp") and {
-    "*",
-    "!css",
-    "!html",
-    "!tsx",
-  } or { "*" }
+	require("document-color").setup({
+		mode = "background",
+	})
 
-  require("colorizer").setup(colorizer_config)
+	local colorizer_config = module_is_enabled("lsp") and {
+		"*",
+		"!css",
+		"!html",
+		"!tsx",
+	} or { "*" }
+
+	require("colorizer").setup(colorizer_config)
+
+	wk.register({
+		["<leader>"] = {
+			b = { c = { ":ColorizerAttachToBuffer<cr>", "Highlight color codes" } },
+		},
+	}, { silent = true, noremap = true })
 end
 
 return M
-

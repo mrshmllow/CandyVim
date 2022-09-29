@@ -2,7 +2,7 @@ local init_path = debug.getinfo(1, "S").source:sub(2)
 local base_dir = init_path:match("(.*[/\\])"):sub(1, -2)
 
 if not vim.tbl_contains(vim.opt.rtp:get(), base_dir) then
-  vim.opt.rtp:append(base_dir)
+	vim.opt.rtp:append(base_dir)
 end
 
 require("lib")
@@ -10,14 +10,21 @@ require("cvim.bootstrap"):init(base_dir)
 
 vim.o.termguicolors = true
 
-local ok, err = pcall(dofile, get_config_file())
+local ok = pcall(dofile, get_config_file())
 
-local plugins, sync_required = require("modules"):refresh()
+local plugins, sync_required = {}, false
+
+if not ok then
+	cvim._message = "Couldn't read your config.lua!"
+	print(cvim._message)
+else
+	plugins, sync_required = require("modules"):refresh()
+end
 
 require("plugins"):init(plugins)
 
 if sync_required then
-  require("plugins"):sync()
+	require("plugins"):sync()
 end
 
 require("autocmd")
@@ -50,8 +57,8 @@ vim.o.signcolumn = "yes"
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
 for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 -- Splits --

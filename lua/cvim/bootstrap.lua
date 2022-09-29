@@ -39,7 +39,7 @@ function _G.get_cache_dir()
 end
 
 function _G.get_config_file()
-  return join_paths(get_config_dir(), "config.lua")
+	return join_paths(get_config_dir(), "config.lua")
 end
 
 _G.cvim = {}
@@ -65,8 +65,8 @@ function M:init(base_dir)
 		return base_dir
 	end
 
-  -- user dir will override any other
-  vim.opt.rtp:append(self.config_dir)
+	-- user dir will override any other
+	vim.opt.rtp:append(self.config_dir)
 
 	if os.getenv("CANDYVIM_RUNTIME_DIR") then
 		vim.opt.rtp:remove(join_paths(vim.call("stdpath", "data"), "site"))
