@@ -1,4 +1,3 @@
-local tbl = require("lib.tbl")
 local M = {}
 
 M._default_modules = {
@@ -6,11 +5,12 @@ M._default_modules = {
   "luasnip",
   "treesitter",
   "sticky_context",
-  "dashboard"
+  "dashboard",
 }
 
 M.modules = {}
-M.loaded_modules = {}
+
+M.lock = {}
 
 ---Return true if CandyVim module is enabled
 ---@return boolean
@@ -18,17 +18,43 @@ function _G.module_is_enabled(name)
   return vim.tbl_contains(M.modules, name)
 end
 
+---@param path string
+function M.write_lock(path)
+  local file = io.open(path, "w+")
+
+  vim.tbl_map(function(module_name)
+    file:write(module_name, "\n")
+  end, M.modules)
+end
+
 vim.api.nvim_create_user_command("CandyLoaded", function()
   print("Loaded CandyVim modules:", vim.inspect(M.modules))
 end, {})
 
-function M:init(disabled_modules)
+---Setup CandyVim modules
+---@return table
+---@return boolean
+function M:refresh()
   local required_plugins = {}
   local modules = vim.tbl_extend("error", M._default_modules, {})
+  local lock_path = join_paths(get_runtime_dir(), "modules.lock")
+
+  local lock = read_lines(lock_path)
+  local requires_sync = false
 
   for _, module_name in pairs(modules) do
-    if vim.tbl_contains(disabled_modules, module_name) then
+    local lock_contains = vim.tbl_contains(lock, module_name)
+
+    if vim.tbl_contains(cvim.disabled_modules, module_name) then
+      if lock_contains then
+        requires_sync = true
+      end
+
       goto continue
+    end
+
+    if not lock_contains then
+      requires_sync = true
     end
 
     table.insert(M.modules, module_name)
@@ -51,7 +77,7 @@ function M:init(disabled_modules)
 
     for index, plugin in pairs(module._required_plugins) do
       if index > 1 then
-        local packer_name = tbl.tbl_last(vim.split(plugin[1], "/"))
+        local packer_name = last(vim.split(plugin[1], "/"))
 
         plugin.event = module._load_on
 
@@ -65,7 +91,11 @@ function M:init(disabled_modules)
     ::continue::
   end
 
-  return required_plugins
+  if requires_sync then
+    M.write_lock(lock_path)
+  end
+
+  return required_plugins, requires_sync
 end
 
 return M

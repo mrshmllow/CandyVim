@@ -1,7 +1,19 @@
-local M = {}
-
-function M.tbl_last(tbl)
+---Get last element of table
+---@param tbl table
+---@return unknown
+function _G.last(tbl)
   return tbl[#tbl]
 end
 
-return M
+---Return true if two arrays contain the same elements
+---@param first table
+---@param second table
+-- function _G.matches(first, second)
+--   for _, value in pairs(second) do
+--     if not vim.tbl_contains(first, value) then
+--       return false
+--     end
+--   end
+--   return true
+-- end
+--
