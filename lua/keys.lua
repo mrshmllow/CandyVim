@@ -78,9 +78,8 @@ wk.register({
 				"Rename this tab",
 			},
 		},
-    b = {
-      name = "Buffer",
-
-    }
+		b = {
+			name = "Buffer",
+		},
 	},
 }, { silent = true, noremap = true })

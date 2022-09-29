@@ -64,70 +64,7 @@ function M:init(plugins)
 
 			use({
 				"hrsh7th/nvim-cmp",
-				config = function()
-					local cmp = require("cmp")
-					local lspkind = require("lspkind")
-
-					cmp.setup({
-						snippet = {
-							expand = function(args)
-								require("luasnip").lsp_expand(args.body)
-							end,
-						},
-						window = {
-							-- completion = cmp.config.window.bordered(),
-							-- documentation = cmp.config.window.bordered(),
-						},
-						mapping = {
-							["<C-b>"] = cmp.mapping.scroll_docs(-4),
-							["<C-f>"] = cmp.mapping.scroll_docs(4),
-							["<C-e>"] = cmp.mapping.abort(),
-							["<C-Space>"] = cmp.mapping.complete(),
-							["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-							["<C-n>"] = cmp.mapping.select_next_item(),
-							["<C-p>"] = cmp.mapping.select_prev_item(),
-						},
-						sources = cmp.config.sources({
-							{ name = "nvim_lsp" },
-							{ name = "luasnip" },
-						}, {
-							{ name = "buffer" },
-						}),
-						formatting = {
-							format = lspkind.cmp_format({
-								mode = "symbol_text",
-								menu = {
-									buffer = "[buf]",
-									nvim_lsp = "[lsp]",
-									luasnip = "[snip]",
-									nvim_lua = "[lua]",
-									latex_symbols = "[latex]",
-								},
-							}),
-						},
-					})
-
-					-- Use buffer source for `/`
-					cmp.setup.cmdline("/", {
-						sources = {
-							{ name = "buffer" },
-						},
-					})
-
-					-- Use cmdline & path source for ':'
-					cmp.setup.cmdline(":", {
-						sources = cmp.config.sources({
-							{ name = "path" },
-						}, {
-							{ name = "cmdline" },
-						}),
-					})
-
-					-- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-					-- cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
-
-					-- cmp_autopairs.lisp[#cmp_autopairs.lisp+1] = "racket"
-				end,
+				config = "require('plugins.cmp')",
 				requires = {
 					"hrsh7th/cmp-nvim-lsp", -- LSP source for CMP
 					"hrsh7th/cmp-path", -- Filesystem paths for CMP
@@ -199,7 +136,7 @@ function M:init(plugins)
 			-- Git
 			use({
 				"lewis6991/gitsigns.nvim",
-				config = "require('plugins.ui.gitsigns')",
+				config = "require('plugins.git')",
 				event = "BufRead",
 			})
 
@@ -207,7 +144,7 @@ function M:init(plugins)
 			use({
 				"catppuccin/nvim",
 				as = "catppuccin",
-				config = "require('plugins.ui.themes.catppuccin')",
+				config = "require('plugins.catppuccin')",
 				after = "nvim-navic",
 			})
 
@@ -230,7 +167,7 @@ function M:init(plugins)
 			-- Telescope
 			use({
 				"nvim-telescope/telescope.nvim",
-				config = "require('plugins.ui.telescope')",
+				config = "require('plugins.telescope')",
 				requires = {
 					"nvim-lua/plenary.nvim",
 					"nvim-telescope/telescope-ui-select.nvim",
@@ -272,14 +209,6 @@ function M:init(plugins)
 				event = "BufRead",
 			})
 
-			-- Motion
-			use({
-				"phaazon/hop.nvim",
-				config = "require('plugins.hop')",
-				event = "BufRead",
-			})
-
-			-- Stay in place makes me happy
 			use({
 				"gbprod/stay-in-place.nvim",
 				config = function()
@@ -315,6 +244,23 @@ function M:init(plugins)
 			use({
 				"folke/which-key.nvim",
 				config = "require('keys')",
+			})
+
+			-- Dashboard
+			use({
+				"goolord/alpha-nvim",
+				requires = "kyazdani42/nvim-web-devicons",
+				config = "require('plugins.dashboard')",
+			})
+
+			use({
+				"nvim-treesitter/nvim-treesitter",
+				run = ":TSUpdate",
+				config = "require('plugins.treesitter')",
+				requires = {
+					"nvim-treesitter/nvim-treesitter-textobjects",
+					"windwp/nvim-ts-autotag",
+				},
 			})
 
 			if packer_bootstrap then

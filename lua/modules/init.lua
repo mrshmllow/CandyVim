@@ -1,14 +1,10 @@
 local M = {}
 
-M._default_modules = {
-	"colour",
-	"luasnip",
-	"treesitter",
-	"sticky_context",
-	"dashboard",
-}
-
 M.modules = {}
+
+M._ghost_modules = {
+	"git_signs",
+}
 
 M.lock = {}
 
@@ -43,21 +39,18 @@ function M:refresh()
 	local requires_sync = false
 
 	for _, module_name in pairs(cvim.enabled_modules) do
-		local lock_contains = vim.tbl_contains(lock, module_name)
+		table.insert(M.modules, module_name)
 
-		-- if vim.tbl_contains(cvim.disabled_modules, module_name) then
-		-- 	if lock_contains then
-		-- 		requires_sync = true
-		-- 	end
-		--
-		-- 	goto continue
-		-- end
+		if vim.tbl_contains(M._ghost_modules, module_name) then
+			goto continue
+		end
+
+		local lock_contains = vim.tbl_contains(lock, module_name)
 
 		if not lock_contains then
 			requires_sync = true
 		end
 
-		table.insert(M.modules, module_name)
 		local module = require("modules." .. module_name)
 
 		if not module._required_plugins then

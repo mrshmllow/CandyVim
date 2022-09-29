@@ -50,13 +50,14 @@ wk.register({
 		f = {
 			name = " Find",
 			f = { ":Telescope find_files<cr>", "Find File" },
-			d = { ":Telescope find_files cwd=~/.config/<cr>", "Find in ~/.config/" },
+			e = { ":Telescope find_files cwd=~/.config/<cr>", "Find in ~/.config/" },
 			t = { ":Telescope git_files<cr>", "Git Files" },
 			h = { ":Telescope oldfiles<cr>", "Open Recent File" },
 			b = { ":Telescope buffers<cr>", "Quickswitch buffers" },
 			["/"] = { ":Telescope live_grep<cr>", "Search" },
 			m = { ":Telescope man_pages<cr>", "Search man pages" },
 			c = { ":Telescope commands<cr>", "Search commands" },
+			d = { ":Telescope diagnostics<cr>", "Diagnostics" },
 		},
 
 		-- Git & Github --

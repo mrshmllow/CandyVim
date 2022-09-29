@@ -5,6 +5,7 @@ vim.api.nvim_create_user_command("ToggleBlame", function()
 end, {})
 
 gitsigns.setup({
+	signcolumn = module_is_enabled("git_signs"),
 	on_attach = function(bufnr)
 		local gs = package.loaded.gitsigns
 		local wk = require("which-key")
