@@ -32,13 +32,15 @@ function M.load_config()
 	-- `cvim.darkmode`
 	local background = default(cvim.darkmode, " ") and "dark" or "light"
 
-	if background ~= vim.o.background and refresh_catppuccin and refresh_feline then
-		-- Manually using vim.cmd(":set bacground.. wasnt working
-		refresh_catppuccin(background)
-		refresh_feline(background)
-	end
+	if background ~= vim.o.background then
+		if refresh_catppuccin and refresh_feline then
+			-- Manually using vim.cmd(":set bacground.. wasnt working
+			refresh_catppuccin(background)
+			refresh_feline(background)
+		end
 
-	vim.o.background = background
+		vim.o.background = background
+	end
 end
 
 return M
