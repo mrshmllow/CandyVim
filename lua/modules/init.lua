@@ -36,22 +36,22 @@ end, {})
 ---@return boolean
 function M:refresh()
 	local required_plugins = {}
-	local modules = vim.tbl_extend("error", M._default_modules, {})
+	-- local modules = vim.tbl_extend("error", M._default_modules, cvim.enabled_modules)
 	local lock_path = join_paths(get_runtime_dir(), "modules.lock")
 
 	local lock = read_lines(lock_path)
 	local requires_sync = false
 
-	for _, module_name in pairs(modules) do
+	for _, module_name in pairs(cvim.enabled_modules) do
 		local lock_contains = vim.tbl_contains(lock, module_name)
 
-		if vim.tbl_contains(cvim.disabled_modules, module_name) then
-			if lock_contains then
-				requires_sync = true
-			end
-
-			goto continue
-		end
+		-- if vim.tbl_contains(cvim.disabled_modules, module_name) then
+		-- 	if lock_contains then
+		-- 		requires_sync = true
+		-- 	end
+		--
+		-- 	goto continue
+		-- end
 
 		if not lock_contains then
 			requires_sync = true

@@ -5,28 +5,11 @@ if not vim.tbl_contains(vim.opt.rtp:get(), base_dir) then
 	vim.opt.rtp:append(base_dir)
 end
 
-require("lib")
-require("cvim.bootstrap"):init(base_dir)
-
 vim.o.termguicolors = true
 
-local ok = pcall(dofile, get_config_file())
-
-local plugins, sync_required = {}, false
-
-if not ok then
-	cvim._message = "Couldn't read your config.lua!"
-	print(cvim._message)
-else
-	plugins, sync_required = require("modules"):refresh()
-end
-
-require("plugins"):init(plugins)
-
-if sync_required then
-	require("plugins"):sync()
-end
-
+require("lib")
+require("cvim.bootstrap"):init(base_dir)
+require("cvim.config"):load_config()
 require("autocmd")
 
 -- Leader --

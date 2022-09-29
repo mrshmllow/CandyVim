@@ -13,10 +13,6 @@ wk.setup({
 	},
 })
 
--- Misc --
-
-vim.g.mapleader = " "
-
 -- Terminal ESC
 vim.api.nvim_set_keymap("t", "<leader><Esc>", "<C-\\><C-n>", { noremap = true })
 

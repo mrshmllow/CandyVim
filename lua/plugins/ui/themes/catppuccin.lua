@@ -1,13 +1,17 @@
+function _G.refresh_catppuccin(mode)
+	vim.cmd("Catppuccin " .. (mode == "light" and "latte" or "mocha"))
+
+	-- This is a bit of a hack
+	local context = require("treesitter-context")
+
+	context.toggle()
+	context.toggle()
+end
+
 vim.api.nvim_create_autocmd("OptionSet", {
 	pattern = "background",
 	callback = function()
-		vim.cmd("Catppuccin " .. (vim.v.option_new == "light" and "latte" or "mocha"))
-
-		-- This is a bit of a hack
-		local context = require("treesitter-context")
-
-		context.toggle()
-		context.toggle()
+		refresh_catppuccin(vim.v.option_new)
 	end,
 })
 
@@ -33,16 +37,6 @@ require("catppuccin").setup({
 	term_colors = true,
 })
 
-local handle = io.popen("gsettings get org.gnome.desktop.interface color-scheme", "r")
-local result = handle:read("*a")
-handle:close()
-
-local new = result:gsub("\n[^\n]*(\n?)$", "%1")
-
-if new == "'prefer-dark'" then
-	vim.g.catppuccin_flavour = "mocha"
-else
-	vim.g.catppuccin_flavour = "latte"
-end
+vim.g.catppuccin_flavour = vim.o.background == "dark" and "mocha" or "latte"
 
 vim.cmd.colorscheme("catppuccin")

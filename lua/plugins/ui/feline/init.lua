@@ -341,13 +341,17 @@ require("feline").winbar.setup({
 	theme = (vim.g.catppuccin_flavour == "mocha" and mochaTheme or latteTheme),
 })
 
+function _G.refresh_feline(mode)
+	if mode == "light" then
+		require("feline").use_theme(latteTheme)
+	else
+		require("feline").use_theme(mochaTheme)
+	end
+end
+
 vim.api.nvim_create_autocmd("OptionSet", {
 	pattern = "background",
 	callback = function()
-		if vim.v.option_new == "light" then
-			require("feline").use_theme(latteTheme)
-		else
-			require("feline").use_theme(mochaTheme)
-		end
+		refresh_feline(vim.v.option_new)
 	end,
 })
