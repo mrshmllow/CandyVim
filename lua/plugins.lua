@@ -204,6 +204,7 @@ function M:init(plugins)
 					require("indent_blankline").setup({
 						space_char_blankline = " ",
 						show_current_context = true,
+						filetype_exclude = { "dashboard" },
 					})
 				end,
 				event = "BufRead",
@@ -248,9 +249,9 @@ function M:init(plugins)
 
 			-- Dashboard
 			use({
-				"goolord/alpha-nvim",
-				requires = "kyazdani42/nvim-web-devicons",
+				"glepnir/dashboard-nvim",
 				config = "require('plugins.dashboard')",
+				after = "catppuccin",
 			})
 
 			use({
