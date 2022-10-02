@@ -41,6 +41,8 @@ sed -e s"#RUNTIME_DIR_VAR#\"${CANDYVIM_RUNTIME_DIR}\"#"g \
   -e s"#CACHE_DIR_VAR#\"${CANDYVIM_CACHE_DIR}\"#"g "$source" \
   | tee "$dest" > /dev/null
 
+cp "$INSTALL_PATH/cvim/utils/config.lua.template" "$XDG_CONFIG_HOME/config.lua"
+
 echo "Updating Plugins..."
 
 "$dest" --headless -c "autocmd User PackerComplete quitall" -c PackerSync &> /dev/null

@@ -1,0 +1,53 @@
+--   /$$$$$$                            /$$           /$$    /$$ /$$$$$$ /$$      /$$
+--  /$$__  $$                          | $$          | $$   | $$|_  $$_/| $$$    /$$$
+-- | $$  \__/  /$$$$$$  /$$$$$$$   /$$$$$$$ /$$   /$$| $$   | $$  | $$  | $$$$  /$$$$
+-- | $$       |____  $$| $$__  $$ /$$__  $$| $$  | $$|  $$ / $$/  | $$  | $$ $$/$$ $$
+-- | $$        /$$$$$$$| $$  \ $$| $$  | $$| $$  | $$ \  $$ $$/   | $$  | $$  $$$| $$
+-- | $$    $$ /$$__  $$| $$  | $$| $$  | $$| $$  | $$  \  $$$/    | $$  | $$\  $ | $$
+-- |  $$$$$$/|  $$$$$$$| $$  | $$|  $$$$$$$|  $$$$$$$   \  $/    /$$$$$$| $$ \/  | $$
+--  \______/  \_______/|__/  |__/ \_______/ \____  $$    \_/    |______/|__/     |__/
+--                                          /$$  | $$
+--                                         |  $$$$$$/
+--                                          \______/
+
+-- Welcome to your CandyVim configuration!
+
+-- HINT: This file is reloaded when you save it
+-- You might need to reload CandyVim to see some changes
+
+-- Special commands can be found by using your leader key
+cvim.leader = "space"
+
+-- Enable or disable light mode
+-- You can change on the fly with `:set background=light`
+cvim.darkmode = true
+
+-- Languages you specifically want to work
+cvim.languages = {
+	"lua",
+}
+
+-- Here you can disable modules that might bother you
+-- HINT: Type `gcc` to toggle comments
+cvim.enabled_modules = {
+	-- Highlight hex codes and LSP colours like this - #f38ba8 #eba0ac #fab387
+	-- Useful for TailwindCSS classes
+	"colour",
+
+	-- Add snippets
+	"luasnip",
+
+	-- Adds git signs
+	"git_signs",
+
+	-- Enable code context at the top of the window
+	"sticky_context",
+
+	-- Enable "TODO" highlights
+	-- You can also search for them with `<leader>fD`
+	"todo",
+
+	-- Add easy hopping. Try right now by pressing `s`.
+	-- Also replaces other keymaps like `f` and `t`
+	"hop",
+}
