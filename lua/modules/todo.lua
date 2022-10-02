@@ -19,15 +19,13 @@ function M:init()
 		},
 	})
 
-	if module_is_enabled("telescope") then
-		require("which-key").register({
-			["<leader>"] = {
-				f = {
-					D = { ":TodoTelescope<cr>", "TODOs" },
-				},
+	require("which-key").register({
+		["<leader>"] = {
+			f = {
+				D = { ":TodoTelescope<cr>", "TODO's" },
 			},
-		})
-	end
+		},
+	})
 end
 
 return M
