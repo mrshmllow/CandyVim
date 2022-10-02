@@ -2,14 +2,14 @@ local meta = require("lib.meta")
 local db = require("dashboard")
 
 db.custom_header = {
-	[[        _    .  ,   .           .]],
+	[[        _    .  ,   .           .                      ]],
 	[[    *  / \_ *  / \_      _  *        *   /\'__        *]],
-	[[      /    \  /    \,   ((        .    _/  /  \  *'.]],
-	[[ .   /\/\  /\/ :' __ \_  `          _^/  ^/    `--.]],
+	[[      /    \  /    \,   ((        .    _/  /  \  *'.   ]],
+	[[ .   /\/\  /\/ :' __ \_  `          _^/  ^/    `--.    ]],
 	[[    /    \/  \  _/  \-'\      *    /.' ^_   \_   .'\  *]],
-	[[  /\  .-   `. \/     \ /==~=-=~=-=-;.  _/ \ -. `_/   \]],
-	[[ /  `-.__ ^   / .-'.--\ =-=~_=-=~=^/  _ `--./ .-'  `-]],
-	[[/        `.  / /       `.~-^=-=~=^=.-'      '-._ `._]],
+	[[  /\  .-   `. \/     \ /==~=-=~=-=-;.  _/ \ -. `_/   \ ]],
+	[[ /  `-.__ ^   / .-'.--\ =-=~_=-=~=^/  _ `--./ .-'  `-  ]],
+	[[/        `.  / /       `.~-^=-=~=^=.-'      '-._ `._   ]],
 }
 
 local maps = {}
@@ -54,7 +54,7 @@ db.custom_center = {
 	button("  ", "find                               ", "f", wrap_telescope("find_files")),
 	button("  ", "search                             ", "/", wrap_telescope("live_grep")),
 	button("  ", "recent                             ", "h", wrap_telescope("oldfiles")),
-	button("  ", "new                                ", "n", "DashboardNewFile"),
+	button("  ", "new                                ", "n", ":DashboardNewFile"),
 	button("  ", "last session                       ", "l", ":SessionManager load_last_session"),
 	button("  ", "configure                          ", "c", ":e " .. get_config_file()),
 	button("  ", "quit                               ", "q", ":qa"),
