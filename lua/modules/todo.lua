@@ -12,10 +12,10 @@ M._load_on = "BufRead"
 function M:init()
 	require("todo-comments").setup({
 		keywords = {
-			HINT = { icon = " ", color = "hint" },
+			HINT = { icon = " ", color = "_hint" },
 		},
 		colors = {
-			hint = { "Identifier", "#f2cdcd" },
+			_hint = { "Identifier", "#f2cdcd" },
 		},
 	})
 
