@@ -259,8 +259,8 @@ function M:init(plugins)
 				run = ":TSUpdate",
 				config = "require('plugins.treesitter')",
 				requires = {
-					"nvim-treesitter/nvim-treesitter-textobjects",
-					"windwp/nvim-ts-autotag",
+					{ "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
+					{ "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
 				},
 			})
 
