@@ -7,9 +7,11 @@ function M.load_config()
 		cvim._message = "Couldn't load your config!"
 	end
 
-	local plugins, sync_required = require("modules"):refresh()
+	local extra, sync_required = require("modules"):refresh()
 
-	require("plugins"):init(plugins)
+  local plugins = require("plugins").get_plugins(extra)
+
+	require("load_plugins"):init(plugins)
 
 	if sync_required then
 		require("plugins"):sync()
