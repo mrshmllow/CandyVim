@@ -81,5 +81,9 @@ wk.register({
 		b = {
 			name = "Buffer",
 		},
+		c = {
+			name = "CandyVim",
+			c = { ":tabnew " .. get_config_file() .. "<cr>", "Edit config" }
+		}
 	},
 }, { silent = true, noremap = true })
