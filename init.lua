@@ -12,6 +12,8 @@ require("cvim.bootstrap"):init(base_dir)
 require("cvim.config"):load_config()
 require("autocmd")
 
+vim.o.list = true
+
 -- Leader --
 vim.o.timeoutlen = 1000
 

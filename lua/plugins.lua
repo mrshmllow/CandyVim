@@ -199,7 +199,7 @@ function M:init(plugins)
 			use({
 				"lukas-reineke/indent-blankline.nvim",
 				config = function()
-					vim.opt.list = true
+					vim.opt.listchars:append("space:⋅")
 
 					require("indent_blankline").setup({
 						space_char_blankline = " ",
