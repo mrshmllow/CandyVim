@@ -13,7 +13,6 @@ function M.get_plugins(extra)
 			event = "InsertEnter",
 		},
 
-		-- Meson
 		{
 			"williamboman/mason.nvim",
 			config = "require('plugins.tooling.mason')",
@@ -31,6 +30,7 @@ function M.get_plugins(extra)
 		{
 			"neovim/nvim-lspconfig",
 			config = "require('plugins.lsp.lspconfig')",
+			after = "mason.nvim",
 		},
 
 		{
