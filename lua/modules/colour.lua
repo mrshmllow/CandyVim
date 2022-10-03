@@ -9,7 +9,7 @@ M._required_plugins = {
 	},
 }
 
-M._load_on = "BufRead"
+M._load_on = "User FilteredBufRead"
 
 function M:init()
 	local wk = require("which-key")

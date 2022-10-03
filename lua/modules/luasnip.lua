@@ -3,9 +3,13 @@ local M = {}
 M._required_plugins = {
 	{
 		"L3MON4D3/LuaSnip",
-		requires = "rafamadriz/friendly-snippets",
+	},
+	{
+		"rafamadriz/friendly-snippets",
 	},
 }
+
+M._load_on = "User FilteredBufRead"
 
 function M:init()
 	local luasnip = require("luasnip")

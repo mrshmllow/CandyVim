@@ -20,3 +20,13 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		require("cvim.config").load_config()
 	end,
 })
+
+vim.api.nvim_create_autocmd("BufRead", {
+	pattern = "*",
+	callback = function()
+		if vim.bo.filetype ~= "dashboard" and vim.bo.filetype ~= "NvimTree" then
+			-- Using nvim_exec_autocmds wasnt rly working
+			vim.cmd(":doautocmd User FilteredBufRead")
+		end
+	end,
+})

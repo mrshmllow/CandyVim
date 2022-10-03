@@ -6,7 +6,7 @@ M._required_plugins = {
 	},
 }
 
-M._load_on = "BufRead"
+M._load_on = "User FilteredBufRead"
 
 function M:init()
 	require("treesitter-context").setup()

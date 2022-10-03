@@ -42,7 +42,7 @@ function M.get_plugins(extra)
 		{
 			"hrsh7th/nvim-cmp",
 			config = "require('plugins.cmp')",
-			event = { "CmdlineEnter", "BufRead" },
+			event = { "CmdlineEnter", "User FilteredBufRead" },
 		},
 
 		{ "hrsh7th/cmp-nvim-lsp", opt = true },
@@ -75,7 +75,7 @@ function M.get_plugins(extra)
 					},
 				})
 			end,
-			event = "BufRead",
+			event = "User FilteredBufRead",
 		},
 
 		{
@@ -112,7 +112,7 @@ function M.get_plugins(extra)
 		{
 			"lewis6991/gitsigns.nvim",
 			config = "require('plugins.git')",
-			event = "BufRead",
+			event = "User FilteredBufRead",
 		},
 
 		-- Theme
@@ -136,14 +136,14 @@ function M.get_plugins(extra)
 			config = function()
 				require("nvim_comment").setup()
 			end,
-			event = "BufRead",
+			event = "User FilteredBufRead",
 		},
 
 		-- Telescope
 		{
 			"nvim-telescope/telescope.nvim",
 			config = "require('plugins.telescope')",
-			event = { "BufRead", "User TelescopeNeeded", "CmdlineEnter" },
+			event = { "User FilteredBufRead", "CmdlineEnter" },
 		},
 
 		{ "nvim-telescope/telescope-ui-select.nvim", opt = true },
@@ -180,7 +180,7 @@ function M.get_plugins(extra)
 					filetype_exclude = { "dashboard" },
 				})
 			end,
-			event = "BufRead",
+			event = "User FilteredBufRead",
 		},
 
 		{
@@ -188,7 +188,7 @@ function M.get_plugins(extra)
 			config = function()
 				require("stay-in-place").setup()
 			end,
-			event = "BufRead",
+			event = "User FilteredBufRead",
 		},
 
 		{
@@ -202,7 +202,7 @@ function M.get_plugins(extra)
 					fill_char = " ",
 				})
 			end,
-			event = "BufRead",
+			event = "User FilteredBufRead",
 		},
 
 		{
