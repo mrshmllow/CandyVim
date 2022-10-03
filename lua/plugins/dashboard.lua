@@ -55,7 +55,7 @@ vim.api.nvim_create_autocmd("FileType", {
 db.custom_center = {
 	button("  ", "find                               ", "f", wrap_telescope("find_files")),
 	button("  ", "search                             ", "/", wrap_telescope("live_grep")),
-	button("  ", "recent                             ", "h", wrap_telescope("oldfiles")),
+	button("  ", "recent                             ", "r", wrap_telescope("oldfiles")),
 	button("  ", "new                                ", "n", ":DashboardNewFile"),
 	button("  ", "last session                       ", "l", ":SessionManager load_last_session"),
 	button("  ", "configure                          ", "c", ":e " .. get_config_file()),
@@ -67,21 +67,6 @@ if cvim._message then
 	db.custom_footer = cvim._message
 end
 
--- db.preview_command = "cat | lolcat -F 0.3"
--- db.custom_center  -- table type and in this table you can set icon,desc,shortcut,action keywords. desc must be exist and type is string
---                   -- icon type is nil or string
---                   -- icon_hl table type { fg ,bg} see `:h vim.api.nvim_set_hl` opts
---                   -- shortcut type is nil or string also like icon
---                   -- action type can be string or function or nil.
---                   -- if you don't need any one of icon shortcut action ,you can ignore it.
--- db.custom_footer  -- type can be nil,table or function(must be return table in function)
--- db.preview_file_Path    -- string or function type that mean in function you can dynamic generate height width
--- db.preview_file_height  -- number type
--- db.preview_file_width   -- number type
--- db.preview_command      -- string type (can be ueberzug which only work in linux)
--- db.confirm_key          -- string type key that do confirm in center select
--- db.session_directory    -- string type the directory to store the session file
--- db.header_pad           -- number type default is 1
 db.center_pad = 3
 db.footer_pad = 2
 
