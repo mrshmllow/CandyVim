@@ -1,7 +1,7 @@
 local M = {}
 
 function M.get_plugins(extra)
-	local core = {
+	local plugins = {
 		{ "lewis6991/impatient.nvim", config = "require('impatient')" },
 		{ "wbthomason/packer.nvim" },
 
@@ -238,7 +238,9 @@ function M.get_plugins(extra)
 		{ "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
 	}
 
-	local full = vim.tbl_extend("keep", core, extra)
+	for _, extra_plugin in ipairs(extra) do
+		table.insert(plugins, extra_plugin)
+	end
 
 	local default_snapshot_path = join_paths(get_cvim_base_dir(), "snapshots", "stable.json")
 	local content = vim.fn.readfile(default_snapshot_path)
@@ -249,11 +251,11 @@ function M.get_plugins(extra)
 		return default_sha1[short_name] and default_sha1[short_name].commit
 	end
 
-	for _, spec in ipairs(full) do
+	for _, spec in ipairs(plugins) do
 		spec["commit"] = get_default_sha1(spec)
 	end
 
-	return full
+	return plugins
 end
 
 return M
