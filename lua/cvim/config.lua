@@ -17,7 +17,7 @@ function M.load_config()
 		require("plugins"):sync()
 	end
 
-	---If not x, then f(y)
+	---If not x, then y
 	---@param x any
 	---@param y any
 	local function default(x, y)
