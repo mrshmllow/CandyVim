@@ -33,7 +33,7 @@ end, {})
 function M:refresh()
 	local required_plugins = {}
 	-- local modules = vim.tbl_extend("error", M._default_modules, cvim.enabled_modules)
-	local lock_path = join_paths(get_config_dir(), "plugin", "modules.lock")
+	local lock_path = join_paths(get_config_dir(), ".candy_modules.lock")
 
 	local lock = read_lines(lock_path)
 	local requires_sync = false

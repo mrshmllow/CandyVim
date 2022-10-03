@@ -86,6 +86,7 @@ require("nvim-tree").setup({
 	filters = {
 		custom = {
 			"^.git$",
+			".candy_modules.lock",
 		},
 	},
 	diagnostics = {
