@@ -195,25 +195,15 @@ function M.get_plugins(extra)
 			"voldikss/vim-floaterm",
 		},
 
-		-- Folds
 		{
-			"anuvyklack/fold-preview.nvim",
-			requires = "anuvyklack/keymap-amend.nvim",
+			"anuvyklack/pretty-fold.nvim",
 			config = function()
-				require("fold-preview").setup()
+				require("pretty-fold").setup({
+					fill_char = " ",
+				})
 			end,
 			event = "BufRead",
 		},
-
-		-- {
-		-- 	"anuvyklack/pretty-fold.nvim",
-		-- 	config = function()
-		-- 		require("pretty-fold").setup({
-		-- 			fill_char = " ",
-		-- 		})
-		-- 	end,
-		-- 	event = "BufRead",
-		-- },
 
 		{
 			"folke/which-key.nvim",
