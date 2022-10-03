@@ -1,3 +1,4 @@
+local null_ls = require("null-ls")
 local M = {}
 
 M.lsp = {
@@ -22,6 +23,10 @@ M.lsp = {
 			},
 		},
 	},
+}
+
+M.null_ls = {
+	null_ls.builtins.formatting.stylua,
 }
 
 return M

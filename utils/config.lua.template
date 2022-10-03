@@ -22,9 +22,9 @@ cvim.leader = "space"
 -- You can change on the fly with `:set background=light`
 cvim.darkmode = true
 
--- Languages and packs you specifically want to work.
--- CandyVim will automatically install and configure everything for you.
--- Most are disabled by default, so review what languages are available and choose languages that you use
+-- Languages and packs you want to work with.
+-- Language packs add formatting, auto complete, and code actions
+-- Most are disabled by default, so review what languages are available and choose ones that you use
 -- HINT: Type `gcc` to toggle comments
 cvim.language_packs = {
 	"lua",
@@ -33,15 +33,15 @@ cvim.language_packs = {
 	-- "python",
 	-- "bash",
 
-	-- Contains Java and Kotlin
-	-- "java",
-
 	-- Contains basic web support. HTML, CSS, and JS/TS
 	-- "web",
 
 	-- Contains extra support for web technologies
-	-- TailwindCSS, Prisma, Vue and Svelte
+	-- TailwindCSS, Prisma, Vue, Svelte, Eslint, and prettier
 	-- "web-extra"
+
+	-- Contains Java and Kotlin
+	-- "java",
 }
 
 -- Here you can disable modules that might bother you
