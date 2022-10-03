@@ -23,7 +23,11 @@ echo "Installing packer.nvim"
 
 rm -rf "$CANDYVIM_RUNTIME_DIR/site/pack/packer/start/packer.nvim"
 
-git clone https://github.com/wbthomason/packer.nvim --depth 1 "$CANDYVIM_RUNTIME_DIR/site/pack/packer/start/packer.nvim/" --quiet
+if [ ! -d "$CANDYVIM_RUNTIME_DIR/site/pack/packer/start/packer.nvim/" ]; then
+  git clone https://github.com/wbthomason/packer.nvim --depth 1 "$CANDYVIM_RUNTIME_DIR/site/pack/packer/start/packer.nvim/" --quiet
+else
+  git -C "$CANDYVIM_RUNTIME_DIR/site/pack/packer/start/packer.nvim/" pull
+fi
 
 echo "Copying files..."
 
