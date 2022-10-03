@@ -14,4 +14,9 @@ M.null_ls = {
 	null_ls.builtins.code_actions.eslint_d,
 }
 
+M.install = {
+	"prettierd",
+	"eslint_d",
+}
+
 return M

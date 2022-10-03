@@ -29,4 +29,8 @@ M.null_ls = {
 	null_ls.builtins.formatting.stylua,
 }
 
+M.insall = {
+	"stylua",
+}
+
 return M
