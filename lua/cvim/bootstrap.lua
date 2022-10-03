@@ -18,20 +18,24 @@ function _G.get_runtime_dir()
 	return cvim_runtime_dir
 end
 
----Get the full path to `$CANDYVIM_CONFIG_DIR`
+---Get the full path to the candyvim config
 ---@return string
 function _G.get_config_dir()
-	local cvim_config_dir = os.getenv("CANDYVIM_CONFIG_DIR")
+	local attempt = os.getenv("XDG_CONFIG_HOME")
+
+	local cvim_config_dir = join_paths(attempt and attempt or join_paths(os.getenv("HOME"), ".config"), "cvim")
 	if not cvim_config_dir then
 		return vim.call("stdpath", "config")
 	end
 	return cvim_config_dir
 end
 
----Get the full path to `$CANDYVIM_CACHE_DIR`
+---Get the full path to the candyvim cache
 ---@return string
 function _G.get_cache_dir()
-	local cvim_cache_dir = os.getenv("CANDYVIM_CACHE_DIR")
+	local attempt = os.getenv("XDG_CACHE_HOME")
+
+	local cvim_cache_dir = join_paths(attempt and attempt or join_paths(os.getenv("HOME"), ".cache"), "cvim")
 	if not cvim_cache_dir then
 		return vim.call("stdpath", "cache")
 	end

@@ -2,12 +2,8 @@
 set -eo pipefail
 
 XDG_DATA_HOME="${XDG_DATA_HOME:-"$HOME/.local/share"}"
-XDG_CACHE_HOME="${XDG_CACHE_HOME:-"$HOME/.cache"}"
-XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-"$HOME/.config"}"
 
 CANDYVIM_RUNTIME_DIR="${CANDYVIM_RUNTIME_DIR:-"$XDG_DATA_HOME/candyvim"}"
-CANDYVIM_CONFIG_DIR="${CANDYVIM_CONFIG_DIR:-"$XDG_CONFIG_HOME/cvim"}"
-CANDYVIM_CACHE_DIR="${CANDYVIM_CACHE_DIR:-"$XDG_CACHE_HOME/cvim"}"
 
 curl -s https://raw.githubusercontent.com/mrshmllow/CandyVim/main/utils/pretty/mountain.txt
 
@@ -39,8 +35,7 @@ rm -f "$dest"
 cp "$source" "$dest"
 
 sed -e s"#RUNTIME_DIR_VAR#\"${CANDYVIM_RUNTIME_DIR}\"#"g \
-  -e s"#CONFIG_DIR_VAR#\"${CANDYVIM_CONFIG_DIR}\"#"g \
-  -e s"#CACHE_DIR_VAR#\"${CANDYVIM_CACHE_DIR}\"#"g "$source" \
+  "$source" \
   | tee "$dest" > /dev/null
 
 cp "$CANDYVIM_RUNTIME_DIR/cvim/utils/config.lua.template" "$XDG_CONFIG_HOME/config.lua"
