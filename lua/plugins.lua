@@ -4,6 +4,7 @@ function M.get_plugins(extra)
 	local plugins = {
 		{ "lewis6991/impatient.nvim", config = "require('impatient')" },
 		{ "wbthomason/packer.nvim" },
+		{ "nvim-lua/plenary.nvim" },
 
 		{
 			"windwp/nvim-autopairs",
@@ -41,18 +42,15 @@ function M.get_plugins(extra)
 		{
 			"hrsh7th/nvim-cmp",
 			config = "require('plugins.cmp')",
-			requires = {
-				"hrsh7th/cmp-nvim-lsp", -- LSP source for CMP
-				"hrsh7th/cmp-path", -- Filesystem paths for CMP
-				"hrsh7th/cmp-cmdline", -- Command sources for CMP
-				"onsails/lspkind.nvim", -- Adds icons
-
-				-- Snips --
-				"L3MON4D3/LuaSnip", -- LuaSnip
-				"saadparwaiz1/cmp_luasnip", -- LuaSnip source for CMP
-			},
-			after = "LuaSnip",
+			event = { "CmdlineEnter", "BufRead" },
 		},
+
+		{ "hrsh7th/cmp-nvim-lsp", opt = true },
+		{ "hrsh7th/cmp-path", opt = true },
+		{ "hrsh7th/cmp-cmdline", opt = true },
+		{ "onsails/lspkind.nvim" }, -- Having trouble
+
+		{ "saadparwaiz1/cmp_luasnip", opt = true },
 
 		{
 			"nvim-lua/lsp-status.nvim",
@@ -148,22 +146,21 @@ function M.get_plugins(extra)
 			event = { "BufRead", "User TelescopeNeeded", "CmdlineEnter" },
 		},
 
-		{ "nvim-lua/plenary.nvim" },
-		{ "nvim-telescope/telescope-ui-select.nvim" },
-		{ "nvim-telescope/telescope-node-modules.nvim" },
-		{ "nvim-telescope/telescope-file-browser.nvim" },
-		{ "nvim-telescope/telescope-github.nvim" },
+		{ "nvim-telescope/telescope-ui-select.nvim", opt = true },
+		{ "nvim-telescope/telescope-node-modules.nvim", opt = true },
+		{ "nvim-telescope/telescope-file-browser.nvim", opt = true },
+		{ "nvim-telescope/telescope-github.nvim", opt = true },
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+			opt = true,
 		},
-		{ "nvim-telescope/telescope-frecency.nvim" },
-		{ "tami5/sqlite.lua" },
+		{ "nvim-telescope/telescope-frecency.nvim", opt = true },
+		{ "tami5/sqlite.lua", opt = true },
 
 		-- Sessions
 		{
 			"Shatur/neovim-session-manager",
-			requires = { { "nvim-lua/plenary.nvim" } },
 			config = function()
 				require("session_manager").setup({
 					autoload_mode = require("session_manager.config").AutoloadMode.Disabled, -- Define what to do when Neovim is started without arguments. Possible values: Disabled, CurrentDir, LastSession

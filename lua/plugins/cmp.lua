@@ -1,5 +1,13 @@
 local cmp = require("cmp")
 local lspkind = require("lspkind")
+local packer = require("packer")
+
+packer.loader("cmp-nvim-lsp")
+packer.loader("cmp-path")
+packer.loader("lspkind.nvim")
+packer.loader("cmp_luasnip")
+
+require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 cmp.setup({
 	snippet = {
