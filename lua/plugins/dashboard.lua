@@ -47,6 +47,8 @@ vim.api.nvim_create_autocmd("FileType", {
 
 			vim.keymap.set("n", map[1], map[2], { buffer = true, silent = true, nowait = true })
 		end, maps)
+
+		vim.keymap.set("n", "<esc>", ":qa<cr>", { buffer = true, nowait = true })
 	end,
 })
 
@@ -57,7 +59,6 @@ db.custom_center = {
 	button("  ", "new                                ", "n", ":DashboardNewFile"),
 	button("  ", "last session                       ", "l", ":SessionManager load_last_session"),
 	button("  ", "configure                          ", "c", ":e " .. get_config_file()),
-	button("  ", "quit                               ", "q", ":qa"),
 }
 
 db.custom_footer = { "CandyVim - " .. meta.get_candyvim_branch() .. " " .. meta.get_candyvim_version() }
