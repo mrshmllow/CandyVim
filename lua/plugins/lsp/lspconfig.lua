@@ -35,7 +35,7 @@ for _, language_name in pairs(cvim.language_packs) do
 		if type(server) == "string" then
 			nvim_lsp[server].setup(config)
 		else
-			vim.tbl_extend("keep", config, server[2] == nil and {} or server[2])
+			config = vim.tbl_extend("error", config, server[2] == nil and {} or server[2])
 
 			nvim_lsp[server[1]].setup(config)
 		end
