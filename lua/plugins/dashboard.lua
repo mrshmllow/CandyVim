@@ -64,7 +64,7 @@ db.custom_center = {
 db.custom_footer = { "CandyVim - " .. meta.get_candyvim_branch() .. " " .. meta.get_candyvim_version() }
 
 if cvim._message then
-	db.custom_footer = cvim._message
+	db.custom_footer = { cvim._message }
 end
 
 db.center_pad = 3
@@ -107,9 +107,15 @@ local function refresh_hl(mode)
 		fg = palette.mauve,
 	})
 
-	vim.api.nvim_set_hl(0, "DashboardFooter", {
-		fg = palette.flamingo,
-	})
+	if cvim._message then
+		vim.api.nvim_set_hl(0, "DashboardFooter", {
+			fg = palette.red,
+		})
+	else
+		vim.api.nvim_set_hl(0, "DashboardFooter", {
+			fg = palette.flamingo,
+		})
+	end
 end
 
 vim.api.nvim_create_autocmd("OptionSet", {

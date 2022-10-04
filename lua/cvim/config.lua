@@ -4,24 +4,14 @@ function M.load_config()
 	local ok = pcall(dofile, get_config_file())
 
 	if not ok then
-		cvim._message = "Couldn't load your config!"
-	end
-
-	local extra, sync_required = require("modules"):refresh()
-
-  local plugins = require("plugins").get_plugins(extra)
-
-	require("load_plugins"):init(plugins)
-
-	if sync_required then
-		require("plugins"):sync()
+		cvim._message = " Couldn't load your config!"
 	end
 
 	---If not x, then y
 	---@param x any
 	---@param y any
 	local function default(x, y)
-		if vim.F.if_nil(x) then
+		if x == nil then
 			return y
 		end
 
@@ -43,6 +33,21 @@ function M.load_config()
 
 		vim.o.background = background
 	end
+
+	cvim.enabled_modules = default(cvim.enabled_modules, {})
+	cvim.language_packs = default(cvim.language_packs, { "lua" })
+
+	local extra, sync_required = require("modules"):refresh()
+
+	local plugins = require("plugins").get_plugins(extra)
+
+	require("load_plugins"):init(plugins)
+
+	if sync_required then
+		require("plugins"):sync()
+	end
+
+	vim.cmd(":doautocmd User CandyEnter")
 end
 
 return M

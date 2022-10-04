@@ -37,6 +37,7 @@ function M.get_plugins(extra)
 		{
 			"jose-elias-alvarez/null-ls.nvim",
 			config = "require('plugins.lsp.null-ls')",
+			event = "User CandyEnter",
 		},
 
 		{

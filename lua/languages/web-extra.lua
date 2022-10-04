@@ -1,4 +1,3 @@
-local null_ls = require("null-ls")
 local M = {}
 
 M.lsp = {
@@ -8,11 +7,14 @@ M.lsp = {
 	"prismals",
 }
 
-M.null_ls = {
-	null_ls.builtins.formatting.prettierd,
-	null_ls.builtins.diagnostics.eslint_d,
-	null_ls.builtins.code_actions.eslint_d,
-}
+function M:null_ls()
+	local null_ls = require("null-ls")
+	return {
+		null_ls.builtins.formatting.prettierd,
+		null_ls.builtins.diagnostics.eslint_d,
+		null_ls.builtins.code_actions.eslint_d,
+	}
+end
 
 M.install = {
 	"prettierd",

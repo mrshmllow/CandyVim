@@ -9,7 +9,7 @@ for _, language_name in pairs(cvim.language_packs) do
 	local language_def = require("languages." .. language_name)
 
 	if language_def.null_ls then
-		for _, source in pairs(language_def.null_ls) do
+		for _, source in pairs(language_def.null_ls()) do
 			table.insert(sources, source)
 		end
 	end
