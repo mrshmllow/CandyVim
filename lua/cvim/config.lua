@@ -7,19 +7,8 @@ function M.load_config()
 		cvim._message = " Couldn't load your config!"
 	end
 
-	---If not x, then y
-	---@param x any
-	---@param y any
-	local function default(x, y)
-		if x == nil then
-			return y
-		end
-
-		return x
-	end
-
 	-- `cvim.leader`
-	local leader = default(cvim.leader, " ")
+	local leader = vim.F.if_nil(cvim.leader, " ")
 
 	if leader == "space" then
 		vim.g.mapleader = " "
@@ -28,7 +17,7 @@ function M.load_config()
 	end
 
 	-- `cvim.darkmode`
-	local background = default(cvim.darkmode, " ") and "dark" or "light"
+	local background = vim.F.if_nil(cvim.darkmode, " ") and "dark" or "light"
 
 	if background ~= vim.o.background then
 		if refresh_catppuccin and refresh_feline then
@@ -40,8 +29,8 @@ function M.load_config()
 		vim.o.background = background
 	end
 
-	cvim.enabled_modules = default(cvim.enabled_modules, {})
-	cvim.language_packs = default(cvim.language_packs, { "lua" })
+	cvim.enabled_modules = vim.F.if_nil(cvim.enabled_modules, {})
+	cvim.language_packs = vim.F.if_nil(cvim.language_packs, { "lua" })
 
 	local extra, sync_required = require("modules"):refresh()
 
