@@ -19,7 +19,13 @@ function M.load_config()
 	end
 
 	-- `cvim.leader`
-	vim.g.mapleader = default(cvim.leader, " ")
+	local leader = default(cvim.leader, " ")
+
+	if leader == "space" then
+		vim.g.mapleader = " "
+	else
+		vim.g.mapleader = leader
+	end
 
 	-- `cvim.darkmode`
 	local background = default(cvim.darkmode, " ") and "dark" or "light"
