@@ -214,7 +214,7 @@ function M.get_plugins(extra)
 		{
 			"glepnir/dashboard-nvim",
 			config = "require('plugins.dashboard')",
-			after = "catppuccin",
+			after = { "catppuccin", "plenary.nvim" },
 		},
 
 		{

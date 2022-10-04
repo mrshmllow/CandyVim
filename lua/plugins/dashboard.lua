@@ -61,7 +61,7 @@ db.custom_center = {
 	button("  ", "configure                          ", "c", ":e " .. get_config_file()),
 }
 
-db.custom_footer = { "CandyVim - " .. meta.get_candyvim_branch() .. " " .. meta.get_candyvim_version() }
+db.custom_footer = { "CandyVim - " .. meta.get_candyvim_version() }
 
 if cvim._message then
 	db.custom_footer = { cvim._message }
