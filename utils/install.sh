@@ -39,7 +39,7 @@ sed -e s"#RUNTIME_DIR_VAR#\"${CANDYVIM_RUNTIME_DIR}\"#"g \
   "$source" \
   | tee "$dest" > /dev/null
 
-install -D "$CANDYVIM_RUNTIME_DIR/cvim/utils/config.lua.template" "$XDG_CONFIG_HOME/cvim/config.lua"
+install -D "$CANDYVIM_RUNTIME_DIR/cvim/utils/config.example.lua" "$XDG_CONFIG_HOME/cvim/config.lua"
 
 echo "Updating Plugins..."
 
