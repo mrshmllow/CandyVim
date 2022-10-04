@@ -2,6 +2,7 @@
 set -eo pipefail
 
 XDG_DATA_HOME="${XDG_DATA_HOME:-"$HOME/.local/share"}"
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-"$HOME/.config"}"
 
 CANDYVIM_RUNTIME_DIR="${CANDYVIM_RUNTIME_DIR:-"$XDG_DATA_HOME/candyvim"}"
 
@@ -38,7 +39,7 @@ sed -e s"#RUNTIME_DIR_VAR#\"${CANDYVIM_RUNTIME_DIR}\"#"g \
   "$source" \
   | tee "$dest" > /dev/null
 
-cp "$CANDYVIM_RUNTIME_DIR/cvim/utils/config.lua.template" "$XDG_CONFIG_HOME/config.lua"
+install -D "$CANDYVIM_RUNTIME_DIR/cvim/utils/config.lua.template" "$XDG_CONFIG_HOME/cvim/config.lua"
 
 echo "Updating Plugins..."
 
