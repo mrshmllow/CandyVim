@@ -1,11 +1,15 @@
 function _G.refresh_catppuccin(mode)
 	vim.cmd("Catppuccin " .. (mode == "light" and "latte" or "mocha"))
 
-	-- This is a bit of a hack
-	local context = require("treesitter-context")
+	if module_is_enabled("sticky_context") then
+		require("packer").loader("nvim-treesitter-context")
 
-	context.toggle()
-	context.toggle()
+		-- This is a bit of a hack
+		local context = require("treesitter-context")
+
+		context.toggle()
+		context.toggle()
+	end
 end
 
 vim.api.nvim_create_autocmd("OptionSet", {
