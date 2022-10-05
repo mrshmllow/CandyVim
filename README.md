@@ -12,7 +12,7 @@ I created it because many people asked for my dotfiles and it got out of hand wi
 
 ## Install
 
-CandyVim is in the AUR. [(Using amethyst of course)](https://github.com/crystal-linux/amethyst)
+You can install CandyVim with the AUR [(using amethyst of course)](https://github.com/crystal-linux/amethyst)
 
 ```bash
 ame i candyvim-git
