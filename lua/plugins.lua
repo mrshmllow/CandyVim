@@ -37,7 +37,7 @@ function M.get_plugins(extra)
 		{
 			"jose-elias-alvarez/null-ls.nvim",
 			config = "require('plugins.lsp.null-ls')",
-			event = "User CandyEnter",
+      after = "mason.nvim"
 		},
 
 		{
@@ -49,8 +49,7 @@ function M.get_plugins(extra)
 		{ "hrsh7th/cmp-nvim-lsp", opt = true },
 		{ "hrsh7th/cmp-path", opt = true },
 		{ "hrsh7th/cmp-cmdline", opt = true },
-		{ "onsails/lspkind.nvim" }, -- Having trouble
-
+		{ "onsails/lspkind.nvim", opt = true, module = "lspkind"  },
 		{ "saadparwaiz1/cmp_luasnip", opt = true },
 
 		{
@@ -147,17 +146,18 @@ function M.get_plugins(extra)
 			event = { "User FilteredBufRead", "CmdlineEnter" },
 		},
 
-		{ "nvim-telescope/telescope-ui-select.nvim", opt = true },
-		{ "nvim-telescope/telescope-node-modules.nvim", opt = true },
-		{ "nvim-telescope/telescope-file-browser.nvim", opt = true },
-		{ "nvim-telescope/telescope-github.nvim", opt = true },
+		{ "nvim-telescope/telescope-ui-select.nvim", opt = true, module = "telescope._extensions.ui-select" },
+		{ "nvim-telescope/telescope-node-modules.nvim", opt = true, module = "telescope._extensions.node_modules" },
+		{ "nvim-telescope/telescope-file-browser.nvim", opt = true, module = "telescope._extensions.file_browser" },
+		{ "nvim-telescope/telescope-github.nvim", opt = true, module = "telescope._extensions.gh" },
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 			opt = true,
+      module = "telescope._extensions.fzf"
 		},
-		{ "nvim-telescope/telescope-frecency.nvim", opt = true },
-		{ "tami5/sqlite.lua", opt = true },
+		{ "nvim-telescope/telescope-frecency.nvim", opt = true, module = "telescope._extensions.frecency" },
+		{ "tami5/sqlite.lua", opt = true, module = "sqlite" },
 
 		-- Sessions
 		{

@@ -3,6 +3,7 @@ local M = {}
 M._required_plugins = {
 	{
 		"nvim-treesitter/nvim-treesitter-context",
+		module = "treesitter-context",
 	},
 }
 

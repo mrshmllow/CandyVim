@@ -6,6 +6,7 @@ packer.loader("cmp-nvim-lsp")
 packer.loader("cmp-path")
 packer.loader("lspkind.nvim")
 packer.loader("cmp_luasnip")
+packer.loader("cmp-cmdline")
 
 require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 

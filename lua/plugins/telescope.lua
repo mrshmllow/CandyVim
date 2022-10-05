@@ -1,14 +1,5 @@
 local telescope = require("telescope")
 local wk = require("which-key")
-local packer = require("packer")
-
-packer.loader("telescope-ui-select.nvim")
-packer.loader("telescope-node-modules.nvim")
-packer.loader("telescope-file-browser.nvim")
-packer.loader("telescope-github.nvim")
-packer.loader("telescope-fzf-native.nvim")
-packer.loader("telescope-frecency.nvim")
-packer.loader("sqlite.lua")
 
 telescope.setup({
 	defaults = {},
