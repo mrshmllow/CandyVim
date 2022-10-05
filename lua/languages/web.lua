@@ -12,6 +12,7 @@ M.lsp = {
 			},
 		},
 	},
+	"emmet_ls",
 }
 
 return M
