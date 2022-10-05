@@ -59,7 +59,7 @@ vim.opt.foldlevelstart = 99
 -- Tabs --
 vim.o.tabstop = 2
 vim.o.shiftwidth = 0
-vim.o.expandtab = true
+vim.o.expandtab = false
 
 -- CMP --
 vim.o.completeopt = "menu,menuone,noselect"
