@@ -27,3 +27,22 @@ curl -s https://raw.githubusercontent.com/mrshmllow/CandyVim/main/utils/install.
 ## Usage
 
 Once your in CandyVim, hit "c" on your keyboard to enter your config.
+
+## Development
+
+Create this file structure:
+
+```
+~/Projects/CandyVim/
+                    cvim/ -> https://github.com/mrshmllow/CandyVim (You edit here!)
+                    site/pack/packer/start/packer.nvim/ -> https://github.com/wbthomason/packer.nvim
+```
+
+You can now run your dev version of CandyVim with
+
+```bash
+CANDYVIM_RUNTIME_DIR=~/Projects/CandyVim cvim
+```
+
+Note: You must have cvim installed. There isnt really a way to isolate them yet, but you could probably mess about with [`XDG_CONFIG_HOME`](https://wiki.archlinux.org/title/XDG_Base_Directory#User_directories).
+
