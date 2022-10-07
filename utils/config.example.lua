@@ -38,10 +38,13 @@ cvim.language_packs = {
 
 	-- Contains extra support for web technologies
 	-- TailwindCSS, Prisma, Vue, Svelte, Eslint, and prettier
-	-- "web-extra"
+	-- "web-extra",
 
 	-- Contains Java and Kotlin
 	-- "java",
+
+  -- Contains Godot game engine support
+  -- "godot"
 }
 
 -- Here you can disable modules that might bother you
