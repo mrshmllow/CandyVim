@@ -12,7 +12,12 @@ M.lsp = {
 			},
 		},
 	},
-	"emmet_ls",
+	{
+		"emmet_ls",
+		{
+			filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "xml" },
+		},
+	},
 }
 
 return M
