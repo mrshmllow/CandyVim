@@ -173,7 +173,7 @@ function M.get_plugins(extra)
 		{
 			"lukas-reineke/indent-blankline.nvim",
 			config = function()
-				vim.opt.listchars:append("space:⋅")
+				vim.opt.listchars:append("space:·")
 
 				require("indent_blankline").setup({
 					space_char_blankline = " ",
