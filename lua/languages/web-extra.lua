@@ -1,7 +1,20 @@
 local M = {}
 
 M.lsp = {
-	"tailwindcss",
+	{
+		"tailwindcss",
+		{
+			settings = {
+				tailwindCSS = {
+					experimental = {
+						classRegex = {
+							{ "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+						},
+					},
+				},
+			},
+		},
+	},
 	"svelte",
 	"volar",
 	"prismals",
