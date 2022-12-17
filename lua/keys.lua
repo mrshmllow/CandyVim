@@ -20,6 +20,8 @@ vim.api.nvim_set_keymap("v", "ga", ":lua vim.lsp.buf.range_code_action()<cr>", {
 
 vim.keymap.set({ "v", "n" }, "<leader>o", ":lua vim.lsp.buf.format()<cr>", { silent = true, desc = "Format File" })
 
+vim.keymap.set("n", "<leader>e", ":lua vim.diagnostic.open_float()<cr>", { silent = true, desc = "View diagnostic on cursor" })
+
 vim.keymap.set("x", "<leader>p", "pgvy", { silent = true, desc = "Paste without yank" })
 
 wk.register({
