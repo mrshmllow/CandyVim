@@ -19,7 +19,7 @@
 cvim.leader = "space"
 
 -- Enable or disable light mode
--- You can change on the fly with `:set background=light`
+-- You can change on the fly with `:set background=light`, or by editing this file
 cvim.darkmode = true
 
 -- Languages and packs you want to work with.
