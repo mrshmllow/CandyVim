@@ -21,6 +21,17 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	end,
 })
 
+-- Auto save folds
+vim.api.nvim_create_autocmd("BufWinLeave", {
+	pattern = "*.*",
+	command = "mkview",
+})
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+	pattern = "*.*",
+	command = "silent! loadview",
+})
+
 vim.api.nvim_create_autocmd("BufRead", {
 	pattern = "*",
 	callback = function()
