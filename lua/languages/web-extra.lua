@@ -18,6 +18,7 @@ M.lsp = {
 	"svelte",
 	"volar",
 	"prismals",
+	"graphql",
 }
 
 function M:null_ls()
@@ -32,6 +33,7 @@ end
 M.install = {
 	"prettierd",
 	"eslint_d",
+	"graphql-language-service-cli",
 }
 
 return M
