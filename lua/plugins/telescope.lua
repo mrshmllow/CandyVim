@@ -58,6 +58,10 @@ wk.register({
 			m = { ":Telescope man_pages<cr>", "Search man pages" },
 			c = { ":Telescope commands<cr>", "Search commands" },
 			d = { ":Telescope diagnostics<cr>", "Diagnostics" },
+			q = {
+				':lua require("telescope.actions").smart_send_to_qflist(vim.api.nvim_buf_get_number(0))<cr>:copen<cr>',
+				" Save telescope to qflist",
+			},
 		},
 
 		-- Git & Github --
